@@ -6,3 +6,4 @@ seaborn
 scipy
 plotly
 pillow
+IPython
