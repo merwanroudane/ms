@@ -2542,7 +2542,7 @@ elif selected_section == "Continuous Distributions":
 
 		st.plotly_chart(fig_prob, use_container_width=True)
 
-	elif calculation_type == "P(x₁ ≤ X ≤ x₂)":
+calculation_type = st.selectbox("Choose calculation type:", ["P(X ≤ x)", "P(x₁ ≤ X ≤ x₂)"])
 		x_val1 = st.slider("x₁ value:", float(a - (b - a) * 0.5), float(b + (b - a) * 0.5), float(a), 0.01)
 		x_val2 = st.slider("x₂ value:", float(a - (b - a) * 0.5), float(b + (b - a) * 0.5), float(b), 0.01)
 
