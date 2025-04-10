@@ -2542,14 +2542,18 @@ elif selected_section == "Continuous Distributions":
 
 		st.plotly_chart(fig_prob, use_container_width=True)
 
-calculation_type = st.selectbox("Choose calculation type:", ["P(X ≤ x)", "P(x₁ ≤ X ≤ x₂)"])
-		x_val1 = st.slider("x₁ value:", float(a - (b - a) * 0.5), float(b + (b - a) * 0.5), float(a), 0.01)
-		x_val2 = st.slider("x₂ value:", float(a - (b - a) * 0.5), float(b + (b - a) * 0.5), float(b), 0.01)
+                   calculation_type = st.selectbox("Choose calculation type:", ["P(X ≤ x)", "P(x₁ ≤ X ≤ x₂)"])
 
-		# Ensure x_val1 <= x_val2
-		if x_val1 > x_val2:
-			x_val1, x_val2 = x_val2, x_val1
+# Define sliders using a and b
+x_val1 = st.slider("x₁ value:", float(a - (b - a) * 0.5), float(b + (b - a) * 0.5), float(a), 0.01)
+x_val2 = st.slider("x₂ value:", float(a - (b - a) * 0.5), float(b + (b - a) * 0.5), float(b), 0.01)
 
+# Example conditional logic
+if calculation_type == "P(X ≤ x)":
+    st.write(f"Calculating P(X ≤ {x_val1})")
+    # Add your probability calculation here
+elif calculation_type == "P(x₁ ≤ X ≤ x₂)":
+    st.write(f"Calculating P({x_val1} ≤ X ≤ {x_val2})")
 		# Calculate probability
 		lower_bound = max(a, x_val1)
 		upper_bound = min(b, x_val2)
